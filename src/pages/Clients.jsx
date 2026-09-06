@@ -137,10 +137,10 @@ export default function Clients() {
               {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
               <form onSubmit={handleSubmit} className="space-y-4">
                 {[
-                  { name: "name", label: "Full Name", placeholder: "John Doe" },
-                  { name: "email", label: "Email", placeholder: "john@example.com" },
-                  { name: "phone", label: "Phone", placeholder: "9876543210" },
-                  { name: "company", label: "Company", placeholder: "Acme Corp" },
+                  { name: "name", label: "Full Name", placeholder: "Name" },
+                  { name: "email", label: "Email", placeholder: "yourname@example.com" },
+                  { name: "phone", label: "Phone", placeholder: "10 digit mobile number" },
+                  { name: "company", label: "Company", placeholder: "Your company's name" },
                   { name: "address", label: "Address", placeholder: "Chennai, Tamil Nadu" },
                   { name: "gstin", label: "GSTIN (optional)", placeholder: "33AAAAA0000A1Z5" },
                 ].map((field) => (
