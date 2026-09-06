@@ -17,11 +17,11 @@ export default function Sidebar() {
     <>
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 h-16 bg-amber-900 flex items-center justify-between px-5 shadow-md">
-
         <div>
           <h1 className="text-white font-bold text-lg">
             Brew Invoice
           </h1>
+
           <p className="text-amber-300 text-xs">
             {user?.name}
           </p>
@@ -48,9 +48,9 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed lg:sticky
+          fixed
           top-0 left-0
-          z-50 lg:z-auto
+          z-50
           h-screen
           w-64
           bg-amber-900
@@ -59,10 +59,8 @@ export default function Sidebar() {
           ${open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
       >
-
         {/* Brand */}
         <div className="px-6 py-6 border-b border-amber-800">
-
           <h1 className="text-white font-bold text-xl">
             Brew Invoice
           </h1>
@@ -70,12 +68,10 @@ export default function Sidebar() {
           <p className="text-amber-300 text-xs mt-1 truncate">
             {user?.name}
           </p>
-
         </div>
 
         {/* Navigation */}
         <nav className="flex-1 px-4 py-6 space-y-2">
-
           {links.map((link) => {
             const active =
               location.pathname === link.path
@@ -108,12 +104,10 @@ export default function Sidebar() {
               </Link>
             )
           })}
-
         </nav>
 
         {/* Bottom Actions */}
         <div className="px-4 py-5 border-t border-amber-800">
-
           <Link
             to="/invoices/create"
             onClick={() => setOpen(false)}
@@ -128,9 +122,7 @@ export default function Sidebar() {
           >
             Logout
           </button>
-
         </div>
-
       </aside>
     </>
   )
