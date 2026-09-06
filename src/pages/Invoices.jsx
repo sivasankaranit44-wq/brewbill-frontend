@@ -33,23 +33,32 @@ export default function Invoices() {
     fetchInvoices()
   }
 
-  const handleDownload = async (id, invoiceNumber) => {
-    try {
-      const res = await axios.get(`${API}/api/invoices/${id}/pdf`, {
-        headers,
-        responseType: "blob",
-      })
-      const url = window.URL.createObjectURL(new Blob([res.data]))
-      const link = document.createElement("a")
-      link.href = url
-      link.setAttribute("download", `${invoiceNumber}.pdf`)
-      document.body.appendChild(link)
-      link.click()
-      link.remove()
-    } catch (err) {
-      alert("PDF download failed")
-    }
+ const handleDownload = async (id, invoiceNumber) => {
+  try {
+    const res = await axios.get(`${API}/api/invoices/${id}/pdf`, {
+      headers,
+      responseType: "blob",
+    })
+
+    const url = window.URL.createObjectURL(res.data)
+
+    const link = document.createElement("a")
+    link.href = url
+    link.download = `${invoiceNumber}.pdf`
+
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+
+    window.URL.revokeObjectURL(url)
+  } catch (err) {
+    console.error("PDF DOWNLOAD ERROR:", err)
+    console.error("STATUS:", err.response?.status)
+    console.error("RESPONSE:", err.response?.data)
+
+    alert(`PDF download failed: ${err.response?.status || "Unknown error"}`)
   }
+}
 
   const handleStatusUpdate = async (id, newStatus) => {
     try {
