@@ -44,9 +44,9 @@ export default function CreateInvoice() {
     Authorization: `Bearer ${user?.token}`,
   }
 
-  // =========================
+
   // FETCH CLIENTS
-  // =========================
+
   useEffect(() => {
     if (!user?.token) return
 
@@ -65,9 +65,9 @@ export default function CreateInvoice() {
     fetchClients()
   }, [user?.token])
 
-  // =========================
+
   // INVOICE FORM CHANGE
-  // =========================
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -75,9 +75,9 @@ export default function CreateInvoice() {
     }))
   }
 
-  // =========================
+ 
   // CLIENT FORM CHANGE
-  // =========================
+
   const handleClientChange = (e) => {
     setClientForm((prev) => ({
       ...prev,
@@ -85,9 +85,8 @@ export default function CreateInvoice() {
     }))
   }
 
-  // =========================
   // ITEM CHANGE
-  // =========================
+
   const handleItemChange = (index, field, value) => {
     const updatedItems = [...formData.items]
 
@@ -105,9 +104,9 @@ export default function CreateInvoice() {
     }))
   }
 
-  // =========================
+
   // ADD ITEM
-  // =========================
+
   const addItem = () => {
     setFormData((prev) => ({
       ...prev,
@@ -122,9 +121,9 @@ export default function CreateInvoice() {
     }))
   }
 
-  // =========================
+
   // REMOVE ITEM
-  // =========================
+
   const removeItem = (index) => {
     setFormData((prev) => ({
       ...prev,
@@ -132,9 +131,9 @@ export default function CreateInvoice() {
     }))
   }
 
-  // =========================
+
   // CREATE CLIENT
-  // =========================
+
   const handleCreateClient = async (e) => {
     e.preventDefault()
 
@@ -181,9 +180,9 @@ export default function CreateInvoice() {
     }
   }
 
-  // =========================
+  
   // CALCULATIONS
-  // =========================
+  
   const subtotal = formData.items.reduce(
     (sum, item) =>
       sum +
@@ -200,9 +199,9 @@ export default function CreateInvoice() {
     taxAmount -
     Number(formData.discount || 0)
 
-  // =========================
+  
   // CREATE INVOICE
-  // =========================
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -234,9 +233,9 @@ export default function CreateInvoice() {
       <main className="lg:ml-64 pt-20 lg:pt-0">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
 
-          {/* =========================
+          {/* 
               PAGE HEADER
-          ========================== */}
+           */}
           <div className="mb-6 sm:mb-8">
             <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
               Create Invoice
@@ -247,9 +246,9 @@ export default function CreateInvoice() {
             </p>
           </div>
 
-          {/* =========================
+          {/* 
               ERROR
-          ========================== */}
+           */}
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-lg mb-6">
               {error}
@@ -259,14 +258,14 @@ export default function CreateInvoice() {
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
 
-              {/* =====================================================
+              {/* 
                   LEFT CONTENT
-              ====================================================== */}
+               */}
               <div className="lg:col-span-2 space-y-5 lg:space-y-6">
 
-                {/* =========================
+                {/* 
                     INVOICE DETAILS
-                ========================== */}
+              */}
                 <section className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
 
                   <h2 className="font-semibold text-gray-900 mb-5">
@@ -375,7 +374,7 @@ export default function CreateInvoice() {
                             name="name"
                             value={clientForm.name}
                             onChange={handleClientChange}
-                            placeholder="John Doe"
+                            placeholder="Client's Name"
                             required
                             className="w-full border border-gray-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                           />
@@ -392,7 +391,7 @@ export default function CreateInvoice() {
                             name="company"
                             value={clientForm.company}
                             onChange={handleClientChange}
-                            placeholder="ABC Technologies"
+                            placeholder="Client's company"
                             required
                             className="w-full border border-gray-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                           />
@@ -409,7 +408,7 @@ export default function CreateInvoice() {
                             name="email"
                             value={clientForm.email}
                             onChange={handleClientChange}
-                            placeholder="client@example.com"
+                            placeholder="email@example.com"
                             required
                             className="w-full border border-gray-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                           />
@@ -426,7 +425,7 @@ export default function CreateInvoice() {
                             name="phone"
                             value={clientForm.phone}
                             onChange={handleClientChange}
-                            placeholder="9876543210"
+                            placeholder="10 digit mobile number"
                             required
                             className="w-full border border-gray-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                           />
